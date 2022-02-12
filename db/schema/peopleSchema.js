@@ -10,8 +10,9 @@ const peopleSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  numberOfEmail: {
-    type: Number
+  numberOfEmails: {
+    type: Number,
+    default: 0
   },
   files: [
     {
