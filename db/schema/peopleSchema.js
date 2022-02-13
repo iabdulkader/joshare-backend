@@ -16,7 +16,7 @@ const peopleSchema = mongoose.Schema({
   },
   timeChangeNum: {
     type: Number,
-    default: 1
+    default: 2
   },
   files: [
     {
