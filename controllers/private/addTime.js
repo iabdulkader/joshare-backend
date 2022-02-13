@@ -9,11 +9,11 @@ const addTime = async (req, res) => {
   try {
     const response = await User.findOneAndUpdate({
       pin: pin, 
-      timeChangeNum: { $gte: 1 }
+      addTimeNum: { $gte: 1 }
     }, 
     { 
       $inc: {
-        timeChangeNum: -1
+        addTimeNum: -1
       },
       $set : {
         expire: moment(prevExpire).add(hour, "hours").toDate()
