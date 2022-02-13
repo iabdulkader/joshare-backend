@@ -1,7 +1,5 @@
 const router = require("express").Router();
 
-
-
 // Route Handling
 router.get("/", (req, res) => {
   res.json({
@@ -9,6 +7,5 @@ router.get("/", (req, res) => {
     success: true
   })
 })
-
 
 module.exports = router;

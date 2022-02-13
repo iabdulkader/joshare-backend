@@ -19,7 +19,6 @@ const getfiles = async (req, res) => {
       msg: e.message
     })
   }
-  
 }
 
 module.exports = {

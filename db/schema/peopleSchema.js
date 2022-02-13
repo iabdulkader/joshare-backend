@@ -10,9 +10,13 @@ const peopleSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  numberOfEmails: {
+  EmailSendNum: {
     type: Number,
-    default: 0
+    default: 2
+  },
+  timeChangeNum: {
+    type: Number,
+    default: 1
   },
   files: [
     {
