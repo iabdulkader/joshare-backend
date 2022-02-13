@@ -20,6 +20,10 @@ const peopleSchema = mongoose.Schema({
   },
   files: [
     {
+      id: {
+        type: String,
+        required: true
+      },
       fileName: {
         type: String,
         required: true
