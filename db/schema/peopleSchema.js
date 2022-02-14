@@ -10,7 +10,7 @@ const peopleSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  EmailSendNum: {
+  emailSendNum: {
     type: Number,
     default: 2
   },

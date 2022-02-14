@@ -6,6 +6,13 @@ const addTime = async (req, res) => {
   let { pin, expire: prevExpire } = req.user;
   let hour = req.body.hour;
   
+  if(!hour){
+    res.json({
+      success: false,
+      msg: "'hour' field is required."
+    })
+  }
+  
   try {
     const response = await User.findOneAndUpdate({
       pin: pin, 
