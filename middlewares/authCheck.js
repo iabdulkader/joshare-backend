@@ -10,18 +10,25 @@ const authCheck = (req, res, next) => {
     });
   } else {
     jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-      if(!error || decoded.pin && decoded.expire){
-        
-        req.user = {
-          pin: decoded.pin,
-          expire: decoded.expire
-        }
-        next();
-      } else {
+      if(error){
         res.status(403).json({
           success: false,
           msg: "Unauthorised.."
         });
+      } else {
+        if(decoded.pin && decoded.expire){
+        
+          req.user = {
+            pin: decoded.pin,
+            expire: decoded.expire
+          }
+          next();
+        } else {
+          res.status(403).json({
+            success: false,
+            msg: "Unauthorised.."
+          });
+        }
       }
     })
   }
