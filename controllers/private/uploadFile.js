@@ -2,8 +2,9 @@ const User = require("../../db/schema/peopleSchema");
 
 const uploadFile = async (req, res) => {
   let { pin } = req.user;
-  let {id, url, name, ext, size} = req.body;
-  if(!id || !url || !name || !ext || !size ) {
+  let { id, downloadUrl, fileName, extName, size } = req.body;
+  
+  if(!id || !downloadUrl || !fileName || !extName || !size ) {
     res.status(402).json({
       success: false,
       msg: "All fields are required."
@@ -11,18 +12,20 @@ const uploadFile = async (req, res) => {
   }
   
   try {
+    const fileObj = {
+      id,
+      fileName,
+      extName,
+      size,
+      downloadUrl
+    }
+    
     const response = await User.findOneAndUpdate({ pin: pin }, {
       $push: {
-        files: {
-          id,
-          fileName: name,
-          extName: ext,
-          size,
-          downloadUrl: url
-        }
+        files: fileObj
       }
     }, { new: true })
-    console.log(response)
+    
     if(response){
       res.status(200).json({
         success: true,
