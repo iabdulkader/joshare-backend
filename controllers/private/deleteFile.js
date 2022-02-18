@@ -12,7 +12,7 @@ const deleteFile = async (req, res) => {
     }, { new: true })
     
     if(response){
-      res.json({
+      res.status(200).json({
         success: true,
         msg: "Successfully Deleted"
       })
